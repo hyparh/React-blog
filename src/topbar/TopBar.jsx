@@ -6,8 +6,12 @@ const TopBar = () => {
       <div className="topLeft">
         <i class="fa-brands fa-facebook"></i>
       </div>
-      <div className="topCenter">center</div>
-      <div className="topRight">right</div>
+      <div className="topCenter">
+        <i class="fa-brands fa-square-twitter"></i>
+      </div>
+      <div className="topRight">
+        <i class="fa-brands fa-pinterest"></i>
+      </div>
     </div>
   );
 };
