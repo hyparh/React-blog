@@ -1,28 +1,25 @@
 import "./post.css";
+import { Link } from "react-router-dom";
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
     <div className="post">
-      <img
-        className="postImg"
-        src="https://www.cloudynights.com/uploads/monthly_09_2022/post-306923-0-13535800-1662853098.png"
-        alt=""
-      />
+      {post.photo && <img className="postImg" src={post.photo} alt="" />}
       <div className="postInfo">
         <div className="postCats">
-          <span className="postCat">Music</span>
-          <span className="postCat">Life</span>
+          {post.categories.map((c) => (
+            <span className="postCat">{c.name}</span>
+          ))}
         </div>
-        <span className="postTitle">Lorem ipsum dolor sit</span>
+        <Link to={`/post/${post._id}`} className="link">
+          <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus
-        laborum eos id eligendi ipsa facilis eius aliquid laboriosam est
-        sapiente itaque excepturi voluptatum cum consequuntur a voluptate
-        delectus, tenetur suscipit.
-      </p>
+      <p className="postDesc">{post.description}</p>
     </div>
   );
 };

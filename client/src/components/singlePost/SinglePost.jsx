@@ -1,16 +1,29 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./singlePost.css";
 
 const SinglePost = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data);
+    };
+    getPost();
+  }, [path]);
+
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
-        <img
-          src="https://www.cloudynights.com/uploads/monthly_09_2022/post-306923-0-13535800-1662853098.png"
-          alt=""
-          className="singlePostImg"
-        />
+        {post.photo && (
+          <img src={post.photo} alt="" className="singlePostImg" />
+        )}
         <h1 className="singlePostTitle">
-          Some great Jupiter
+          {post.title}
           <div className="singlePostEdit">
             <i className="singlePostIcon fa-regular fa-pen-to-square"></i>
             <i className="singlePostIcon fa-solid fa-trash-can"></i>
@@ -18,36 +31,16 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Someone</b>
+            Author:
+            <Link to={`/?user=${post.username}`} className="link">
+              <b>{post.username}</b>
+            </Link>
           </span>
-          <span className="singlePostDate">1 hour ago</span>
+          <span className="singlePostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singlePostDesc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus minima
-          dignissimos laborum id rem reprehenderit, corporis cumque, nisi odio
-          delectus hic incidunt earum quos debitis quasi dolore, accusamus
-          quibusdam mollitia!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus minima
-          dignissimos laborum id rem reprehenderit, corporis cumque, nisi odio
-          delectus hic incidunt earum quos debitis quasi dolore, accusamus
-          quibusdam mollitia!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus minima
-          dignissimos laborum id rem reprehenderit, corporis cumque, nisi odio
-          delectus hic incidunt earum quos debitis quasi dolore, accusamus
-          quibusdam mollitia!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus minima
-          dignissimos laborum id rem reprehenderit, corporis cumque, nisi odio
-          delectus hic incidunt earum quos debitis quasi dolore, accusamus
-          quibusdam mollitia!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus minima
-          dignissimos laborum id rem reprehenderit, corporis cumque, nisi odio
-          delectus hic incidunt earum quos debitis quasi dolore, accusamus
-          quibusdam mollitia!
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus minima
-          dignissimos laborum id rem reprehenderit, corporis cumque, nisi odio
-          delectus hic incidunt earum quos debitis quasi dolore, accusamus
-          quibusdam mollitia!
-        </p>
+        <p className="singlePostDesc">{post.description}</p>
       </div>
     </div>
   );
