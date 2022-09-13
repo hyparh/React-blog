@@ -46,11 +46,7 @@ const TopBar = () => {
       </div>
       <div className="topRight">
         {user ? (
-          <img
-            className="topImg"
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Yggdrasil.jpg"
-            alt=""
-          />
+          <img className="topImg" src={user.profilePicture} alt="" />
         ) : (
           <ul className="topList">
             <li className="topListItem">
