@@ -1,3 +1,4 @@
+import sidebarImage from "../../images/telescope.jpg";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -18,10 +19,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="sidebarItem">
         <span className="sidebarTitle">ABOUT ME</span>
-        <img
-          src="https://www.adelaide.edu.au/news-image/xenomorph.jpg"
-          alt=""
-        />
+        <img className="sidebarImage" src={sidebarImage} alt="" />
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
           reprehenderit maxime officiis assumenda nisi!
