@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/React-blog/static/css/main.e3970c15.css",
+    "main.js": "/React-blog/static/js/main.85db357c.js",
+    "static/media/telescope.jpg": "/React-blog/static/media/telescope.2a7f3719073037956ed7.jpg",
+    "index.html": "/React-blog/index.html",
+    "main.e3970c15.css.map": "/React-blog/static/css/main.e3970c15.css.map",
+    "main.85db357c.js.map": "/React-blog/static/js/main.85db357c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e3970c15.css",
+    "static/js/main.85db357c.js"
+  ]
+}
